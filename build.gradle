@@ -4,8 +4,8 @@ buildscript {
         version_kotlin_coroutines = "1.5.2"
         version_retrofit = "2.9.0"
         version_room = "2.4.1"
-        lifecycle_version = '2.5.0-alpha01'
-        livedata_version = '2.5.0-alpha01'
+        lifecycle_version = '2.4.0'
+        livedata_version = '2.4.0'
     }
     repositories {
         google()
