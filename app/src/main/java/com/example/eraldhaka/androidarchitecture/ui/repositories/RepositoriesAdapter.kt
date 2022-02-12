@@ -1,4 +1,4 @@
-package com.example.eraldhaka.androidarchitecture.ui
+package com.example.eraldhaka.androidarchitecture.ui.repositories
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.eraldhaka.androidarchitecture.databinding.RepositoryItemBinding
 import com.example.eraldhaka.androidarchitecture.domain.RepositoryModel
 
-class MainAdapter(private val clickListener: RepositoryClickListener) : ListAdapter<RepositoryModel, MainAdapter.ViewHolder>(RepositoryDiffCallback()) {
+class RepositoriesAdapter(private val clickListener: RepositoryClickListener) : ListAdapter<RepositoryModel, RepositoriesAdapter.ViewHolder>(
+    RepositoryDiffCallback()
+) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
