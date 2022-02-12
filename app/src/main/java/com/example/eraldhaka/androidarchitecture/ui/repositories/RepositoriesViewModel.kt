@@ -1,4 +1,4 @@
-package com.example.eraldhaka.androidarchitecture.ui
+package com.example.eraldhaka.androidarchitecture.ui.repositories
 
 import android.app.Application
 import android.util.Log
@@ -9,7 +9,7 @@ import com.example.eraldhaka.androidarchitecture.network.getNetworkService
 import com.example.eraldhaka.androidarchitecture.repository.MainRepository
 import kotlinx.coroutines.launch
 
-class MainViewModel(application: Application) : ViewModel() {
+class RepositoriesViewModel(application: Application) : ViewModel() {
     private val tag = "MainViewModel"
     private val database = getDatabase(application)
     private val network = getNetworkService()

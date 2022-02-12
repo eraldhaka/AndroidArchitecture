@@ -11,7 +11,7 @@
 
         <variable
             name="clickListener"
-            type="com.example.eraldhaka.androidarchitecture.ui.RepositoryClickListener" />
+            type="com.example.eraldhaka.androidarchitecture.ui.repositories.RepositoryClickListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

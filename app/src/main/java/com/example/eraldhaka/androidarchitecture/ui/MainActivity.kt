@@ -2,40 +2,30 @@ package com.example.eraldhaka.androidarchitecture.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.eraldhaka.androidarchitecture.R
 import com.example.eraldhaka.androidarchitecture.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private val tag = "MainActivity"
-
-    private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this, MainViewModelFactory(application))[MainViewModel::class.java]
-    }
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding : ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        binding.data = viewModel
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
-        binding.lifecycleOwner = this
+        navController = navHostFragment.navController
 
-        val adapter = MainAdapter(RepositoryClickListener {
-            Toast.makeText(this, "clicked: " + it.name, Toast.LENGTH_SHORT).show()
-        })
+        setupActionBarWithNavController(navController)
+    }
 
-        binding.recyclerView.adapter = adapter
-
-        viewModel.myData.observe(this) { repos ->
-            repos?.apply {
-                Log.d(tag, "onCreate:myData size " + repos.size)
-                adapter.submitList(repos)
-            }
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()|| super.onSupportNavigateUp()
     }
 }
